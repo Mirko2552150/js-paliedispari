@@ -1,26 +1,27 @@
+// verifica se una parola inserita è palindroma
+// Svolgimento:
+// 1. Prompt inserimento parola
+// 2. Inverti la parola in una funzione (Es length-1 i-- )
+// 3. Confronta parola invertita con quella inserita
+// 4. if == palindroma se no NON PALINDROMA usando il log
 
-// COMPITO UNO
-// Una funzione per capire se la parola è palindroma
-// COMPITO UNO SVOLGIMENTO:
-// inserire parola
-// girare parola con ordine lettura con i--, se === allora palindroma
-// controllare se parola inserita e parola girata sono uguali
+var inserimentoParola = prompt("inserisci una parola per capire se è palindroma");
 
-var inputCheck = prompt("inserisci una parola per controllare se è palindroma")
+var parolaRovescio = parolaInvertita(inserimentoParola); // palindrome nome fuzione
+console.log(parolaRovescio); // prende il valore da palindrome
 
-var controlloPalindromo = checkPalindrome(inputCheck); // checkPalindrome prende il contenuto da returnWorldReverse preso dalla funzione
-// assegnamo la parola scritta al contrario a controlloPalidromo e la confrontiamo con inputCheck
-if (controlloPalindromo == inputCheck){ //confronto palindromo con parola inserita
-    console.log(inputCheck + ' è un palindromo');
+if (inserimentoParola == parolaRovescio ) {
+    console.log("la parola " + inserimentoParola + " è palindroma");
 } else {
-    console.log(inputCheck + ' non è un palindromo');
+    console.log("la parola " + inserimentoParola + " non è palindroma" );
 }
 
-//FUNZIONE CON FOR PER CICLARE ED ESTRARRE PAROLE AL CONTRARIO
-function checkPalindrome(inputCheck) {
-    var wordReverse = [] // Arrey contenente le parole inserite dagli eventuali input
-    for (var i =  inputCheck.length -1; i >=0 ; i--) { //partenza a length-1 (ultima lettera della parola) + arrivo a 0 (prima lettera della parola) + (contatore -1)
-        wordReverse += inputCheck;
+// FUNZIONE
+function parolaInvertita(parola) {
+    var parolaReverse = "";
+    // length -1 perche la posizione parte da 0 non da uno
+    for (var i = parola.length-1; i >= 0; i--) { // parola length -1 (ultimo carattere-1)
+        parolaReverse += parola[i]; // forma contratta, assegno la parolaReverse a parola [i]iesimo, prendiamo la iesima lettere della parola e le inverto
     }
-    return wordReverse; // restituisce il valore alla funzione
+    return parolaReverse;
 }

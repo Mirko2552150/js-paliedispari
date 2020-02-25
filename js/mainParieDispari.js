@@ -1,44 +1,35 @@
-// pari e dispari, inserisci 2 volori, utente 1 e 2 randomici, confrontali e comunica il vincitore
+// domando utente pari o dispari
+// chiedo anche un numero da 1 a 5
+// genero un numero RANDOM da 1 a 5
+// sommo i numeri e controllo chi ha vinto (pari o dispari)
 
-//SCELGO PARI O DISPARI senza CHECK
+var scommessaUtente = prompt("scrivi pari o dispari");
+var numeroUtente = parseInt(prompt("inserisci un numero da 1 a 5"));
+var numeroRandom = generaRandomMinMax(min, max);
+var sommaNumeri = somma(numeroUtente, numeroRandom); // non utili ma per esercizio
+var risultato = pariDispari(sommaNumeri); // entra somma numeri e mi restituisce se pari o pariDispari
 
-var sceltaPaDiUtenteUno = prompt("Utente Uno scegli pari o dispari");
-var sceltaPaDiUtenteDue = prompt("Utente Due scegli pari o dispari");
-
-var sceltaNumeriUtenteUno = parseInt(prompt("utente unos cegli un un numero da 1 a 5"));
-var sceltaNumeriUtenteDue = parseInt(prompt("utente due scegli un un numero da 1 a 5"));
-//TIRI RANDOMICI
-var tiroUtenteUno = getRndInteger(1, 6);
-console.log(tiroUtenteUno);
-var tiroUtenteDue = getRndInteger(1, 6);
-console.log(tiroUtenteDue);
-
-var sommaUtenteUno = tiroUtenteUno + sceltaNumeriUtenteUno;
-console.log(sommaUtenteUno);
-var sommaUtenteDue = tiroUtenteDue + sceltaNumeriUtenteDue;
-console.log(sommaUtenteDue);
-
-if (sommaUtenteUno %2 == 0) {
-    console.log(sommaUtenteUno + "è un numero pari");
+if (risultato === scommessaUtente.toLowerCase()) { // check, confrontiamo la scommessa con l'output dato dalla funzione paridispari
+    console.log("COMPLIMENTI HAI VINTO");
 } else {
-    console.log(sommaUtenteUno + "è un numero dispari");
+    console.log("MI SPIACE, HAI PERSO");
 }
 
-if (sommaUtenteDue %2 == 0) {
-    console.log(sommaUtenteDue + "è un numero pari");
-} else {
-    console.log(sommaUtenteDue + "è un numero dispari");
+// FUNZIONI
+function pariDispari(val) { // ingresso do la somma e valuto se è pari o meno
+    if (val %2 === 0)  {
+    // entra la variabile somma e la divido per 2 per capire se è pari o dispari
+        return "pari"; // se è vera torna la stringa pari
+    } else {
+        return "dispari";
+    }
 }
 
+function somma (valUno, valDue) {
+    return valUno + valDue;
+}
 
-
-
-
-
-
-
-
-// tiro randomico da 1 a 5
-function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (max - min) ) + min;
+function generaRandomMinMax(min, max){
+    var numeroRandom = Math.floor(Math.random() * (max - min + 1)) + min;
+    return numeroRandom;
 }
